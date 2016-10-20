@@ -10,6 +10,13 @@
         li{
             list-style:none;
         }
+        ul{
+            width:800px;
+            position: absolute;
+            left:0;
+            top:0;
+            z-index:1;
+        }
         #box{
             width:800px;
             height:500px;
@@ -44,6 +51,7 @@
             color:#fff;
         }
         </style>
+        <script type="text/javascript" src="move.js" ></script>
         <script type="text/javascript">
          window.onload=function(){
             var oUl=document.getElementsByTagName('ul')[0];
@@ -52,13 +60,13 @@
             var aLiOl=oOl.getElementsByTagName('li');
             for(var i=0;i<aLiOl.length;i++){
                 aLiOl[i].index=i;
+                var oneHeight=aLiUl[0].offsetHeight;
                 aLiOl[i].onclick=function(){
                     for(var i=0;i<aLiOl.length;i++){
-                        aLiUl[i].style.display="none";
                         aLiOl[i].className="";
                     };
                     this.className="active";
-                    aLiUl[this.index].style.display="block";
+                    startMove(oUl,{top:-this.index*oneHeight})
                 }
             }
 
