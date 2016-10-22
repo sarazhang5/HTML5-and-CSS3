@@ -26,22 +26,19 @@ body,figure,h2,p,img,figcaption{
     figcaption p,h2,span,div{
         transition:all 0.35s;
     }
-    figcaption h2,figcaption p{
+    .img1 figcaption h2,.img3 figcaption p,.img3 figcaption h2{
         background-color:#fff;
         margin-bottom:5px;
     }
 /*响应式*/
  @media screen and (max-width:600px){
         figure{width:100%;}
-        figcaption{color:black;}
     }
     @media screen and (min-width:601px) and (max-width:1000px){
         figure{width:50%;}
-        figcaption{color:red;}
     }
     @media screen and (min-width:1001px){
         figure{width:33.33%;}
-        figcaption{color:green;}
     }
 .img1{
     background-color:#2F0000;
@@ -70,3 +67,71 @@ body,figure,h2,p,img,figcaption{
    transform:translate(-50px,0);
    opacity:0.5;
 }
+.img2{
+    background-color:#2F0000;
+}
+.img2 figcaption{
+    width:100%;
+    height:100%;
+    color:#fff;
+}
+.img2 figcaption h2{
+   margin-top:15%;
+   margin-left:18%;
+}
+.img2 figcaption p{
+    margin-left:18%;
+    transform:translate(0,50px);
+    opacity:0;
+}
+.img2 figcaption div{
+    width:60%;
+    height:60%;
+    border:1px solid #ffffff;
+    position: absolute;
+    top:10%;
+    left:15%;
+    transform:translate(0px,-400px) rotate(0);
+}
+.img2:hover img{
+    opacity:0.5;
+}
+.img2:hover figcaption div{
+    transform:translate(0px,0px) rotate(360deg);
+}
+.img2:hover figcaption p{
+    transform:translate(0,0);
+    opacity:1;
+}
+
+.img3{
+    background-color:#2F0000;
+}
+.img3 figcaption{
+    top:10%;
+    left:15%;
+}
+.img3 figcaption h2{
+    transform:skew(90deg);
+}
+.img3 figcaption p{
+    transform:skew(90deg);
+    transition-delay:0.1s;
+}
+.img3:hover img{
+    opacity:0.5;
+}
+.img3:hover figcaption h2{
+    transform:skew(0deg);
+}
+.img3:hover figcaption p{
+    transform:skew(0deg);
+}
+/*transform skew 在火狐下面有bug 暂时不会解决*/
+
+
+
+
+
+
+
