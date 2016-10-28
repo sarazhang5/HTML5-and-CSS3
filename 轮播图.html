@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+    *{
+       margin:0;
+       padding:0;
+    }
+    #scrollImg{
+        width:400px;
+        height:400px;
+        position: relative;
+        border:1px solid red;
+        overflow:hidden;
+    }
+    #scrollImg .num{
+        position: absolute;
+        right:140px;
+        bottom:0;
+    }
+    #scrollImg .num li{
+        display:inline-block;
+        background-color:green;
+        padding:5px;
+    }
+    #scrollImg .pic{
+        width:1800px;
+        height:400px;
+        margin:0;
+        padding:0;
+        position: absolute;
+    }
+    #scrollImg .pic li{
+        float:left;
+    }
+    #scrollImg .pic li img{
+        width:400px;
+        height:400px;
+    }
+    #scrollImg .info{
+        position: absolute;
+        width:400px;
+        height:400px;
+        left:80px;
+        top:150px;
+        color:#ffffff;
+        font-weight:bolder;
+        text-align:center;
+    }
+    #scrollImg .info li{
+        position: absolute;
+        display:none;
+    }
+    li{
+        list-style:none;
+    }
+
+    </style>
+    <script type="text/javascript">
+    window.onload=function(){
+        var oscrollImg=document.getElementById('scrollImg');
+        var aUl=oscrollImg.getElementsByTagName('ul');
+        var aLi=aUl[0].getElementsByTagName('li');
+        var aLinum=aUl[1].getElementsByTagName('li');
+        var aLiinfo=aUl[2].getElementsByTagName('li');
+        var number=0;
+        var aw=aLi[0].offsetWidth;
+        function move(){
+            if(number==4){
+                number=0
+            }
+            for(var i=0;i<aLinum.length;i++){
+                aLinum[i].style.background="green";
+                aLiinfo[i].style.display="none"
+            }
+            aUl[0].style.left=-(number*aw)+'px';
+            aLinum[number].style.background="red";
+            aLiinfo[number].style.display="block"
+            number++;
+
+        }
+        setInterval(move,3000);
+
+ }    
+    </script>
+</head>
+<body>
+  <div id="scrollImg">
+      <ul class="pic">
+          <li><img src="img/x1.jpg" alt="" /></li>
+          <li><img src="img/x2.jpg" alt="" /></li>
+          <li><img src="img/x3.jpg" alt="" /></li>
+          <li><img src="img/x4.jpg" alt="" /></li>
+      </ul>
+      <ul class="num">
+          <li class="active">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+      </ul>
+      <ul class="info">
+          <li>
+              <h2>好美丽</h2>
+              <p>我爱今天哈哈哈哈哈今天是最美丽的</p>
+              <p>我爱今天哈哈哈哈哈今天是最美丽的</p>
+              <p>我爱今天哈哈哈哈哈今天是最美丽的</p>
+              <p>我爱今天哈哈哈哈哈今天是最美丽的</p>
+          </li>
+          <li>
+              <h2>好可爱</h2>
+              <p>我爱今天哈哈哈哈哈今天是最可爱的</p>
+              <p>我爱今天哈哈哈哈哈今天是最可爱的</p>
+              <p>我爱今天哈哈哈哈哈今天是最可爱的</p>
+              <p>我爱今天哈哈哈哈哈今天是最可爱的</p>
+          </li>
+          <li>
+              <h2>好漂亮</h2>
+              <p>我爱今天哈哈哈哈哈今天是最漂亮的</p>
+              <p>我爱今天哈哈哈哈哈今天是最漂亮的</p>
+              <p>我爱今天哈哈哈哈哈今天是最漂亮的</p>
+              <p>我爱今天哈哈哈哈哈今天是最漂亮的</p>
+          </li>
+          <li>
+             <h2>好有趣</h2>
+              <p>我爱今天哈哈哈哈哈今天是最有趣的</p>
+              <p>我爱今天哈哈哈哈哈今天是最有趣的</p> 
+              <p>我爱今天哈哈哈哈哈今天是最有趣的</p> 
+              <p>我爱今天哈哈哈哈哈今天是最有趣的</p>  
+          </li>
+      </ul>
+  </div> 
+</body>
+</html>
