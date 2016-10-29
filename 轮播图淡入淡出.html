@@ -4,58 +4,71 @@
     <meta charset="UTF-8" />
     <title>Document</title>
     <style type="text/css">
-    *{
-       margin:0;
-       padding:0;
-    }
+
     #scrollImg{
         width:400px;
         height:400px;
         position: relative;
         border:1px solid red;
-        overflow:hidden;
-    }
-    #scrollImg .num{
-        position: absolute;
-        right:140px;
-        bottom:0;
-    }
-    #scrollImg .num li{
-        display:inline-block;
-        background-color:green;
-        padding:5px;
+
     }
     #scrollImg .pic{
-        width:1800px;
+        width:400px;
         height:400px;
         margin:0;
         padding:0;
-        position: absolute;
+        border:1px solid black;
     }
     #scrollImg .pic li{
-        float:left;
+        position: absolute;
+        transition:3s;
     }
     #scrollImg .pic li img{
         width:400px;
         height:400px;
     }
+    #scrollImg .num{
+       position: absolute;
+       bottom:0px;
+       left:0px;
+       width:400px;
+       padding:0px;
+       margin:0;
+       text-align:center;
+        border:1px solid red; 
+        clear:both;
+    }
+    #scrollImg .num li{
+        width:90px;
+        height:20px;
+        line-height:20px;
+        text-align:center;
+        cursor:pointer;
+        border:1px solid black;
+        display:inline-block;
+        transition:1s;
+    }
     #scrollImg .info{
         position: absolute;
-        width:400px;
-        height:400px;
-        left:80px;
-        top:150px;
+        left:0px;
+        top:50px;
         color:#ffffff;
         font-weight:bolder;
         text-align:center;
+        border:1px solid green;
     }
     #scrollImg .info li{
+        width:360px;
+        left:20px;
+        top:0px;
         position: absolute;
         display:none;
+        text-align:center;
+        border:1px solid black;
     }
-    li{
-        list-style:none;
-    }
+   li{
+    list-style:none;
+   }
 
     </style>
     <script type="text/javascript">
@@ -65,6 +78,7 @@
         var aLi=aUl[0].getElementsByTagName('li');
         var aLinum=aUl[1].getElementsByTagName('li');
         var aLiinfo=aUl[2].getElementsByTagName('li');
+        var timer=null;
         var number=0;
         var aw=aLi[0].offsetWidth;
         function move(){
@@ -72,18 +86,40 @@
                 number=0
             }
             for(var i=0;i<aLinum.length;i++){
-                aLinum[i].style.background="green";
-                aLiinfo[i].style.display="none"
+                aLinum[i].style.backgroundColor="green";
+                aLiinfo[i].style.display="none";
+                aLi[i].style.opacity="0";
             }
-            aUl[0].style.left=-(number*aw)+'px';
-            aLinum[number].style.background="red";
-            aLinum[number].style.transition="1s";
+            aLi[number].style.opacity="1";           
+            aLinum[number].style.backgroundColor="red";
             aLiinfo[number].style.display="block";
             number++;
-
         }
-        setInterval(move,3000);
-
+        timer=setInterval(move,3000);
+        for(var i=0;i<aLinum.length;i++){
+         aLinum[i].onmouseover=function(){
+            clearInterval(timer);
+         }
+        }
+        for(var i=0;i<aLinum.length;i++){
+        aLinum[i].onmouseout=function(){
+            timer=setInterval(move,3000);
+        }
+       }
+        for(var i=0;i<aLinum.length;i++){
+          aLinum[i].index=i;
+         aLinum[i].onclick=function(){
+             var i=0;
+              for(i=0;i<aLinum.length;i++){
+                aLinum[i].style.backgroundColor="green";
+                aLi[i].style.opacity="0";
+                aLiinfo[i].style.display="none";
+              }
+             this.style.backgroundColor="red";
+             aLi[this.index].style.opacity="1";
+             aLiinfo[this.index].style.display="block";
+           } 
+        }
  }    
     </script>
 </head>
@@ -96,7 +132,7 @@
           <li><img src="img/x4.jpg" alt="" /></li>
       </ul>
       <ul class="num">
-          <li class="active">1</li>
+          <li>1</li>
           <li>2</li>
           <li>3</li>
           <li>4</li>
